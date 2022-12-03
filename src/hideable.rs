@@ -24,7 +24,7 @@ pub fn expand_derive_hideable(ident: Ident, data: Data) -> Result<TokenStream, s
     let fields_if_statements: Vec<TokenStream> = fields.iter().map(|field| generate_if_statements(field)).collect();
 
     let output = quote! {
-    impl hideable_types::Hideable for #ident {
+    impl hider::Hideable for #ident {
         fn hide_fields(&self, attributes: Vec<String>) -> Result<serde_json::Map<String, serde_json::Value>, String> {
             let mut __internal_map = serde_json::Map::new();
 
@@ -59,7 +59,7 @@ fn destructure_field(field: &Field) -> TokenStream {
         }
     }
     quote!{
-        let #field_variable_name: hideable_types::Field<#type_name> = hideable_types::Field { key: #str_field_name.into(), value: self.#field_variable_name.clone(), attributes: #field_attrs };
+        let #field_variable_name: hider::Field<#type_name> = hider::Field { key: #str_field_name.into(), value: self.#field_variable_name.clone(), attributes: #field_attrs };
         __internal_map.insert(#field_variable_name.key.clone(), match serde_json::to_value(#field_variable_name.value) {
             Ok(val) => {val},
             Err(e) => {return Err(e.to_string())},
