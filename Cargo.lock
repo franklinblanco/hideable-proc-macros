@@ -3,10 +3,10 @@
 version = 3
 
 [[package]]
-name = "hideable_proc_macro"
+name = "hideable-proc-macros"
 version = "0.1.0"
 dependencies = [
- "hideable_types",
+ "hideable-types",
  "proc-macro2",
  "quote",
  "serde",
@@ -15,9 +15,9 @@ dependencies = [
 ]
 
 [[package]]
-name = "hideable_types"
+name = "hideable-types"
 version = "0.1.0"
-source = "git+https://github.com/franklinblanco/hideable-types.git#acd8c356c1fcbd986bfea8e8f39113f9411c57f2"
+source = "git+https://github.com/franklinblanco/hideable-types.git#33979d59a48e8f1ad6ebc99f9c72d95b24ff764e"
 dependencies = [
  "serde",
  "serde_json",
