@@ -1,0 +1,19 @@
+[package]
+name = "hideable_proc_macro"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+proc-macro = true
+
+[dependencies]
+syn = "1.0.103"
+quote = "1.0"
+proc-macro2 = "1.0"
+
+serde = { version = "1.0", features = ["derive"] }
+serde_json = { version = "1" }
+
+hideable_types = { git = "https://github.com/franklinblanco/hideable-types.git" }
